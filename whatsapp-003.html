@@ -17,32 +17,31 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <style id='wp-emoji-styles-inline-css'>
 
 	.botao-destaque {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px; /* Reduzi o padding */
-    font-size: 16px; /* Reduzi o font-size */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    animation: pulsar 1.5s infinite;
-    display: block; /* Adicionei display block para centralizar */
-    margin: 0 auto; /* Adicionei margin para centralizar */
+background-color: #28a745; /* Cor verde */
+color: white; /* Cor do texto */
+padding: 15px 30px;
+font-size: 18px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-weight: bold;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+animation: pulsar 1.5s infinite; /* Efeito de pulsação */
 }
 
 .botao-destaque:hover {
-    background-color: #218838;
-    transform: scale(1.05); /* Reduzi o transform para um efeito mais sutil */
+background-color: #218838; /* Cor mais escura ao passar o mouse */
+transform: scale(1.1); /* Aumenta um pouco o botão no hover */
 }
 
+/* Efeito de pulsação */
 @keyframes pulsar {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05); /* Reduzi o transform para um efeito mais sutil */
-    }
+0%, 100% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1); /* Aumenta em 10% no ápice da pulsação */
+}
 }
 </style>
 <style id='wp-block-library-inline-css'>
