@@ -63,36 +63,42 @@ transform: scale(1.1); /* Aumenta em 10% no ápice da pulsação */
 :root :where(.wp-block-separator){}:root :where(.wp-block-separator:not(.is-style-wide):not(.is-style-dots):not(.alignwide):not(.alignfull)){width: 100px}
 </style>
 <style id='wp-block-template-skip-link-inline-css'>
+  /**
+   * Estilos para o link de acesso rápido (skip link)
+   */
 
-		.skip-link.screen-reader-text {
-			border: 0;
-			clip: rect(1px,1px,1px,1px);
-			clip-path: inset(50%);
-			height: 1px;
-			margin: -1px;
-			overflow: hidden;
-			padding: 0;
-			position: absolute !important;
-			width: 1px;
-			word-wrap: normal !important;
-		}
+  /* Oculta o link de acesso rápido por padrão */
+  .skip-link.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+  }
 
-		.skip-link.screen-reader-text:focus {
-			background-color: #eee;
-			clip: auto !important;
-			clip-path: none;
-			color: #444;
-			display: block;
-			font-size: 1em;
-			height: auto;
-			left: 5px;
-			line-height: normal;
-			padding: 15px 23px 14px;
-			text-decoration: none;
-			top: 5px;
-			width: auto;
-			z-index: 100000;
-		}
+  /* Exibe o link de acesso rápido quando focado */
+  .skip-link.screen-reader-text:focus {
+    background-color: #eee;
+    clip: auto !important;
+    clip-path: none;
+    color: #444;
+    display: block;
+    font-size: 1em;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+  }
+</style>
 </style>
 <link rel='stylesheet' id='elementor-frontend-css' href='https://metododiosa.online/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.24.7' media='all' />
 <link rel='stylesheet' id='swiper-css' href='https://metododiosa.online/wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min.css?ver=8.4.5' media='all' />
