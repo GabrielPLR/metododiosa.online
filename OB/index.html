@@ -41,6 +41,23 @@
       .btn-custom:hover {
         background-color: #005ea6; /* Tom mais escuro no hover */
       }
+
+      /* Animação de pulsação */
+      @keyframes pulsar {
+        0% {
+          transform: scale(1); /* Tamanho normal */
+        }
+        50% {
+          transform: scale(1.05); /* Aumenta um pouco */
+        }
+        100% {
+          transform: scale(1); /* Volta ao tamanho normal */
+        }
+      }
+
+      .btn-custom {
+        animation: pulsar 2s infinite; /* Aplica a animação */
+      }
     </style>
   </head>
   <body>
