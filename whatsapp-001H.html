@@ -1,123 +1,385 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Whatsapp 001 - App Sigiloso</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Todos os outros metadados e links de estilo originais permanecem aqui -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Sigiloso</title>
     <style>
-        /* Estilos existentes mantidos */
-        .elementor-form-fields-wrapper {
+        :root {
+            --primary-color: #25D366;
+            --secondary-color: #128C7E;
+            --dark-color: #075E54;
+            --light-color: #DCF8C6;
+            --text-color: #333;
+            --border-color: #ddd;
+            --error-color: #ff4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
             display: flex;
-            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
-        .elementor-field-group {
-            margin-bottom: 15px;
-        }
-        #form-field-TELL {
+        
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            max-width: 450px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .elementor-button {
-            background-color: #25D366;
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .logo {
+            width: 80px;
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover {
+            transform: scale(1.1);
+        }
+        
+        h1 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: var(--text-color);
+            margin-bottom: 30px;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .input-wrapper {
+            display: flex;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .country-code {
+            width: 30%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            background-color: #f9f9f9;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-color);
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 15px;
+        }
+        
+        .phone-input {
+            width: 70%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-left: none;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .phone-input:focus {
+            border-color: var(--primary-color);
+        }
+        
+        .error-message {
+            color: var(--error-color);
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
-            cursor: pointer;
+            padding: 16px;
+            border-radius: 8px;
             width: 100%;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            margin-top: 10px;
         }
-        .elementor-button:hover {
-            background-color: #128C7E;
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .features {
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+        
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .country-code, .phone-input {
+                padding: 12px;
+            }
+        }
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2917987688375774');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2917987688375774&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+	    <script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+<script>
+  window.pixelId = "67f191dc5fc6cc6cf6275dde";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+	    
+	    
     </style>
 </head>
-<body data-rsssl=1 class="page-template page-template-elementor_canvas page page-id-352 wp-custom-logo wp-embed-responsive elementor-default elementor-template-canvas elementor-kit-7 elementor-page elementor-page-352">
-    <div data-elementor-type="wp-page" data-elementor-id="352" class="elementor elementor-352">
-        <!-- Conteúdo existente mantido até o formulário -->
+<body>
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" class="logo">
+        <h1>WhatsApp Premium</h1>
+        <p class="subtitle">Digite seu número para acessar recursos exclusivos</p>
         
-        <div class="elementor-element elementor-element-abc4270 e-flex e-con-boxed e-con e-child" data-id="abc4270" data-element_type="container">
-            <div class="e-con-inner">
-                <!-- Outros elementos mantidos -->
-                
-                <form class="elementor-form" method="post" id="telefone" name="New Form">
-                    <input type="hidden" name="post_id" value="352">
-                    <input type="hidden" name="form_id" value="1c95590">
-                    
-                    <div class="elementor-form-fields-wrapper elementor-labels-">
-                        <div class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-namee elementor-col-20 elementor-sm-25">
-                            <div class="elementor-field elementor-select-wrapper">
-                                <select name="form_fields[namee]" id="form-field-namee" class="elementor-field-textual elementor-size-md">
-                                    <option value="BR +55">BR +55</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="elementor-field-type-tel elementor-field-group elementor-column elementor-field-group-TELL elementor-col-80 elementor-sm-75 elementor-field-required">
-                            <input type="tel" name="form_fields[TELL]" id="form-field-TELL" class="elementor-field elementor-size-md elementor-field-textual" 
-                                   placeholder="Digite o número do WhatsApp aqui" required="required" aria-required="true">
-                        </div>
-                        
-                        <div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
-                            <button type="submit" class="elementor-button elementor-size-sm">
-                                <span>
-                                    <span class="elementor-button-text">Clonar WhatsApp</span>
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                
-                <!-- Outros elementos mantidos -->
+        <form id="whatsappForm">
+            <div class="form-group">
+                <label for="phoneNumber">Número de WhatsApp</label>
+                <div class="input-wrapper">
+                    <select class="country-code" id="countryCode">
+                        <option value="55" data-icon="🇧🇷">BR +55</option>
+                        <option value="1" data-icon="🇺🇸">US +1</option>
+                        <option value="44" data-icon="🇬🇧">UK +44</option>
+                        <option value="91" data-icon="🇮🇳">IN +91</option>
+                    </select>
+                    <input type="tel" class="phone-input" id="phoneNumber" placeholder="Ex: 11987654321" required>
+                </div>
+                <span class="error-message" id="errorMessage">Por favor, insira um número válido</span>
             </div>
-        </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Mensagens ilimitadas
+                </div>
+                <div class="feature">
+                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Status premium
+                </div>
+                <div class="feature">
+                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Suporte prioritário
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                <span id="btnText">Acessar WhatsApp Premium</span>
+                <span id="btnLoading" style="display:none;">Processando...</span>
+            </button>
+        </form>
         
-        <!-- Restante do conteúdo mantido -->
+        <div class="footer">
+            Ao continuar, você concorda com nossos <a href="#">Termos de Serviço</a> e <a href="#">Política de Privacidade</a>.<br>
+            ©2025 WhatsApp Premium. Todos os direitos reservados.
+        </div>
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('telefone');
-        const phoneInput = document.getElementById('form-field-TELL');
-        
-        // Máscara para o telefone
-        phoneInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 2) {
-                value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('whatsappForm');
+            const phoneInput = document.getElementById('phoneNumber');
+            const errorMessage = document.getElementById('errorMessage');
+            const btnText = document.getElementById('btnText');
+            const btnLoading = document.getElementById('btnLoading');
+            
+            // Validação em tempo real
+            phoneInput.addEventListener('input', function() {
+                const phoneNumber = this.value.replace(/\D/g, '');
+                this.value = phoneNumber;
+                
+                if (phoneNumber.length > 0 && phoneNumber.length < 10) {
+                    showError("Número muito curto");
+                } else {
+                    hideError();
+                }
+            });
+            
+            // Envio do formulário
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const countryCode = document.getElementById('countryCode').value;
+                const phoneNumber = phoneInput.value;
+                
+                if (!phoneNumber || phoneNumber.length < 10) {
+                    showError("Por favor, insira um número válido com DDD");
+                    return;
+                }
+                
+                // Mostrar loading
+                btnText.style.display = 'none';
+                btnLoading.style.display = 'inline';
+                
+                // Simular processamento (remova isso em produção)
+                setTimeout(function() {
+                    // Redirecionar para o link desejado
+                    window.location.href = 'https://metododiosa.online/whatsapp-002M';
+                    
+                    // Em um ambiente real, você enviaria os dados para o servidor aqui
+                    // enviarParaServidor(countryCode, phoneNumber);
+                }, 1500);
+            });
+            
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                phoneInput.style.borderColor = 'var(--error-color)';
             }
-            if (value.length > 10) {
-                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+            
+            function hideError() {
+                errorMessage.style.display = 'none';
+                phoneInput.style.borderColor = 'var(--border-color)';
             }
-            e.target.value = value;
+            
+            // Função de exemplo para enviar dados ao servidor
+            function enviarParaServidor(countryCode, phoneNumber) {
+                fetch('https://seuservidor.com/api/whatsapp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        countryCode: countryCode,
+                        phoneNumber: phoneNumber,
+                        timestamp: new Date().toISOString()
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Sucesso:', data);
+                    window.location.href = 'https://metododiosa.online/whatsapp-002M';
+                })
+                .catch((error) => {
+                    console.error('Erro:', error);
+                    showError("Erro ao processar. Tente novamente.");
+                    btnText.style.display = 'inline';
+                    btnLoading.style.display = 'none';
+                });
+            }
         });
-        
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Remove todos os caracteres não numéricos
-            const phoneNumber = phoneInput.value.replace(/\D/g, '');
-            
-            // Validação básica do número
-            if (phoneNumber.length < 10 || phoneNumber.length > 11) {
-                alert('Por favor, insira um número de WhatsApp válido com DDD.');
-                return;
-            }
-            
-            // Redireciona para a página desejada com o número como parâmetro
-            // Substitua a URL abaixo pela sua página de destino
-            window.location.href = 'https://metododiosa.online/whatsapp-002H?numero=' + encodeURIComponent('55' + phoneNumber);
-            
-            // Alternativa: Abrir o WhatsApp diretamente (descomente se preferir)
-            // window.open('https://wa.me/55' + phoneNumber, '_blank');
-        });
-    });
     </script>
-
-    <!-- Todos os outros scripts originais permanecem aqui -->
 </body>
 </html>
+
