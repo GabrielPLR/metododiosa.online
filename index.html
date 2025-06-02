@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espera</title>
+    <title>Carregando...</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,116 +13,29 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            flex-direction: column;
-            text-align: center;
-            padding: 20px;
         }
         .loader {
             border: 5px solid #f3f3f3;
-            border-top: 5px solid #25D366; /* Cor do WhatsApp */
+            border-top: 5px solid #25D366;
             border-radius: 50%;
             width: 50px;
             height: 50px;
             animation: spin 1s linear infinite;
-            margin-bottom: 20px;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .message {
-            font-size: 18px;
-            color: #333;
-            text-align: center;
-            max-width: 500px;
-            margin-bottom: 30px;
-        }
-        .countdown {
-            font-weight: bold;
-            color: #25D366;
-        }
-        .whatsapp-btn {
-            background-color: #25D366;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 30px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .whatsapp-btn:hover {
-            background-color: #128C7E;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-        .whatsapp-btn:active {
-            transform: translateY(0);
-        }
-        .whatsapp-icon {
-            width: 24px;
-            height: 24px;
-        }
-        .highlight {
-            font-weight: bold;
-            color: #25D366;
-        }
-        .auto-redirect {
-            font-size: 14px;
-            color: #666;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
     <div class="loader"></div>
-    
-    <div class="message">
-       
-    </div>
-    
-    
-      
-         
-    
-   
 
     <script>
-        // Configurações
-        const whatsappUrl = "https://api.whatsapp.com/send?phone=5591984199936&fbclid=PAZXh0bgNhZW0CMTEAAacoapRLSTNnTQvwwmhgVBnL0Uym2RANQL62m3WHF9iLyUM2gnuvCCVP2_jjHA_aem_cNtgvavkSmNAvoC1_PDwOQ";
-        const redirectTime = 1; // segundos
-        
-        // Elementos
-        const countdownElement = document.querySelector('.countdown');
-        
-        // Contagem regressiva para redirecionamento automático
-        let count = redirectTime;
-        
-        const updateCountdown = () => {
-            countdownElement.textContent = count;
-            
-            if (count <= 0) {
-                window.location.href = whatsappUrl;
-            } else {
-                count--;
-                setTimeout(updateCountdown, 1000);
-            }
-        };
-        
-        // Iniciar contagem regressiva
-        setTimeout(updateCountdown, 1000);
-        
-        // Redirecionamento imediato se o botão for clicado
-        document.querySelector('.whatsapp-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = whatsappUrl;
-        });
+        // Redirecionar após exatamente 1 segundo
+        setTimeout(function() {
+            window.location.href = "https://api.whatsapp.com/send?phone=5591984199936&fbclid=PAZXh0bgNhZW0CMTEAAacoapRLSTNnTQvwwmhgVBnL0Uym2RANQL62m3WHF9iLyUM2gnuvCCVP2_jjHA_aem_cNtgvavkSmNAvoC1_PDwOQ";
+        }, 1000);
     </script>
 </body>
 </html>
