@@ -1,61 +1,677 @@
-/*
-Theme Name: Twenty Twenty-Five
-Theme URI: https://wordpress.org/themes/twentytwentyfive/
-Author: the WordPress team
-Author URI: https://wordpress.org
-Description: Twenty Twenty-Five emphasizes simplicity and adaptability. It offers flexible design options, supported by a variety of patterns for different page types, such as services and landing pages, making it ideal for building personal blogs, professional portfolios, online magazines, or business websites. Its templates cater to various blog styles, from text-focused to image-heavy layouts. Additionally, it supports international typography and diverse color palettes, ensuring accessibility and customization for users worldwide.
-Requires at least: 6.7
-Tested up to: 6.7
-Requires PHP: 7.2
-Version: 1.0
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: twentytwentyfive
-Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, news
-*/
-
-/*
- * Link styles
- * https://github.com/WordPress/gutenberg/issues/42319
- */
-a {
-	text-decoration-thickness: 1px !important;
-	text-underline-offset: .1em;
+:root {
+    --primary-color: #2a0845;
+    --secondary-color: #6441A5;
+    --accent-color: #FFD700;
+    --premium-color: #10a37f;
+    --text-color: #ffffff;
+    --background-color: #1a0f1f;
+    --card-background: rgba(255, 255, 255, 0.05);
+    --success-color: #4CAF50;
+    --premium-gradient: linear-gradient(135deg, #6441A5, #2a0845);
 }
 
-/* Focus styles */
-:where(.wp-site-blocks *:focus) {
-	outline-width: 2px;
-	outline-style: solid;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-/* Increase the bottom margin on submenus, so that the outline is visible. */
-.wp-block-navigation .wp-block-navigation-submenu .wp-block-navigation-item:not(:last-child) {
-	margin-bottom: 3px;
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, var(--background-color), var(--primary-color));
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
-/* Increase the outline offset on the parent menu items, so that the outline does not touch the text. */
-.wp-block-navigation .wp-block-navigation-item .wp-block-navigation-item__content {
-	outline-offset: 4px;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
-/* Remove outline offset from the submenus, otherwise the outline is visible outside the submenu container. */
-.wp-block-navigation .wp-block-navigation-item ul.wp-block-navigation__submenu-container .wp-block-navigation-item__content {
-	outline-offset: 0;
+/* Timer Banner */
+.timer-banner {
+    background: #ff4444;
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: bold;
+    animation: pulse 2s infinite;
 }
 
-/*
- * Progressive enhancement to reduce widows and orphans
- * https://github.com/WordPress/gutenberg/issues/55190
- */
-h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
-	text-wrap: pretty;
+@keyframes pulse {
+    0% { background-color: #ff4444; }
+    50% { background-color: #ff0000; }
+    100% { background-color: #ff4444; }
 }
 
-/*
- * Change the position of the more block on the front, by making it a block level element.
- * https://github.com/WordPress/gutenberg/issues/65934
-*/
-.more-link {
-	display: block;
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: var(--premium-gradient);
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.preview h1 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.value-prop {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+    line-height: 1.4;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.highlight-price {
+    color: white;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+/* Buttons */
+.primary-button, .secondary-button {
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.primary-button {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.secondary-button {
+    background: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--accent-color);
+}
+
+.primary-button:hover, .secondary-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Preview Section */
+.preview {
+    text-align: center;
+    margin: 6rem 0;
+    padding: 2rem;
+    background: var(--card-background);
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.preview h2 {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+}
+
+.preview-video {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* App Preview Section */
+.app-preview {
+    text-align: center;
+    margin: 6rem 0;
+    padding: 2rem;
+    background: var(--card-background);
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.app-preview h2 {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+}
+
+.app-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem;
+}
+
+.app-image {
+    max-width: 400px;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.app-image:hover {
+    transform: scale(1.05);
+}
+
+.app-features {
+    text-align: left;
+}
+
+.app-features h3 {
+    color: var(--premium-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.app-features ul {
+    list-style: none;
+}
+
+.app-features li {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.app-features li::before {
+    content: "✓";
+    color: var(--premium-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Features Section */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 6rem 0;
+}
+
+.feature-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-color);
+}
+
+.feature-item h3 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Testimonials */
+.testimonials {
+    margin: 6rem 0;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 3rem;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--premium-color);
+}
+
+.testimonial-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.testimonial-content {
+    padding: 1.5rem;
+}
+
+.testimonial-rating {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+/* Pricing Section */
+.pricing {
+    margin: 6rem 0;
+    text-align: center;
+    scroll-margin-top: 2rem;
+}
+
+.pricing h2 {
+    font-size: 2.5rem;
+   
+    margin-bottom: 3rem;
+}
+
+.pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.pricing-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.premium-badge {
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFD700;
+    color: var(--primary-color);
+    padding: 0.5rem 2rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+    z-index: 1;
+}
+
+.pricing-card.premium {
+    background: var(--premium-gradient);
+    border: 2px solid var(--accent-color);
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+    position: relative;
+    overflow: visible;
+}
+
+.pricing-card.premium h3 {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    margin-top: 2rem;
+}
+
+.pricing-card.premium .price {
+    font-size: 4rem;
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: white;
+    margin: 1.5rem 0;
+}
+
+.pricing-card.premium .primary-button {
+    background: #FFD700;
+    color: var(--primary-color);
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.pricing-card.premium .primary-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.price {
+    font-size: 3.5rem;
+    color: white;
+    margin: 1.5rem 0;
+    font-weight: bold;
+}
+
+.benefits {
+    list-style: none;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.benefits li {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.benefits li::before {
+    content: "✓";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+. li {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.benefits1 {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+
+.benefits1::before {
+    content: "x";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+
+.pricing-card.premium .benefits li::before {
+    color: var(--premium-color);
+}
+
+.pricing-card.premium .primary-button.glow {
+    background: var(--premium-color);
+    color: white;
+    animation: buttonGlow 2s infinite alternate;
+}
+
+@keyframes buttonGlow {
+    from {
+        box-shadow: 0 0 10px rgba(16, 163, 127, 0.3);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(16, 163, 127, 0.6);
+    }
+}
+
+/* Guarantee Section */
+.guarantee {
+    background: var(--premium-gradient);
+    padding: 4rem;
+    border-radius: 2rem;
+    text-align: center;
+    margin: 6rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.guarantee h2 {
+    color: var(--accent-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* FAQ Section */
+.faq {
+    margin: 6rem 0;
+}
+
+.faq h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 3rem;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.05);
+    margin: 1rem 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--accent-color);
+}
+
+.faq-question {
+    padding: 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question::after {
+    content: "+";
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.faq-item.active .faq-question::after {
+    content: "-";
+}
+
+.faq-answer {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    padding: 1.5rem;
+    max-height: 500px;
+}
+
+.preview-container {
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+}
+
+.video-wrapper {
+  position: relative;
+  border: 4px solid rgba(192, 38, 211, 0.5);
+  border-radius: 20px;
+  overflow: hidden;
+  padding-top: 177.78%; /* 9:16 aspect ratio */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.video-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fake-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: rgba(30, 58, 138, 0.3);
+}
+
+.progress-fill {
+  height: 100%;
+  width: 37.6%;
+  background: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.overlay-som {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(37, 99, 235, 0.4);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.overlay-content {
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+.overlay-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e0f2fe;
+  margin-bottom: 12px;
+}
+
+.overlay-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #3b82f6;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 500;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.overlay-button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+
+footer {
+    text-align: center;
+    padding: 3rem;
+    background: var(--primary-color);
+    margin-top: 6rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.access-type {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    font-weight: 500;
+}
+
+.pricing-card.premium .access-type {
+    color: var(--premium-color);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .value-prop {
+        font-size: 1.2rem;
+    }
+
+    .pricing-card.premium {
+        transform: none;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .guarantee {
+        padding: 2rem;
+    }
+
+    .price {
+        font-size: 2.5rem;
+    }
+
+    .app-content {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .app-image {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .value-prop {
+        font-size: 1.1rem;
+    }
+
+    .primary-button, .secondary-button {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
 }
