@@ -207,7 +207,7 @@
         
         // 2. Mostrar número formatado
         function formatPhoneNumber(phone) {
-            if (!phone || phone.length < 12) return "NÚMERO NÃO IDENTIFICADO";
+            if (!phone || phone.length < 12) return "";
             return `+${phone.slice(0, 2)} (${phone.slice(2, 4)}) ${phone.slice(4, 9)}-${phone.slice(9)}`;
         }
         
