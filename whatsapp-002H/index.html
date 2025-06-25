@@ -1,362 +1,317 @@
+document.write(`
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Clone</title>
+    <title>Análise Profunda em Andamento</title>
     <style>
-        :root {
-            --whatsapp-green: #25D366;
-            --whatsapp-dark-green: #128C7E;
-            --whatsapp-darker-green: #075E54;
-            --whatsapp-light-green: #DCF8C6;
-            --whatsapp-blue: #34B7F1;
-            --white: #ffffff;
-            --gray: #f0f0f0;
-            --dark-gray: #666;
-            --male-color: #4A89DC;
-            --female-color: #ED5565;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-        
         body {
-            background: linear-gradient(135deg, var(--whatsapp-light-green), var(--white));
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a1a;
+            margin: 0;
             padding: 20px;
+            color: #e0e0e0;
+            text-align: center;
         }
         
         .container {
-            background-color: var(--white);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 450px;
-            padding: 40px 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: linear-gradient(90deg, var(--whatsapp-green), var(--whatsapp-dark-green));
-        }
-        
-        .logo {
-            width: 70px;
-            margin-bottom: 20px;
+            max-width: 500px;
+            margin: 20px auto;
+            background: #1a1a2e;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,255,127,0.2);
+            border: 1px solid #00ff7f;
         }
         
         h1 {
-            color: var(--whatsapp-darker-green);
+            color: #00ff7f;
             margin-bottom: 5px;
             font-size: 24px;
-            font-weight: 600;
         }
         
-        .question {
-            color: var(--dark-gray);
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-        
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .option-btn {
-            background-color: var(--white);
-            border: 2px solid var(--gray);
-            color: var(--dark-gray);
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .option-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .option-btn:active {
-            transform: translateY(0);
-        }
-        
-        .option-btn.male.selected {
-            background-color: var(--male-color);
-            color: var(--white);
-            border-color: var(--male-color);
-        }
-        
-        .option-btn.female.selected {
-            background-color: var(--female-color);
-            color: var(--white);
-            border-color: var(--female-color);
-        }
-        
-        .option-icon {
-            width: 24px;
-            height: 24px;
-        }
-        
-        .form-group {
+        .subtitle {
+            color: #7fdbff;
             margin-bottom: 25px;
-            text-align: left;
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--whatsapp-darker-green);
-            font-weight: 500;
-            font-size: 14px;
-        }
-        
-        .input-wrapper {
-            display: flex;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .country-code {
-            width: 30%;
-            padding: 15px;
-            border: 1px solid var(--gray);
-            background-color: var(--gray);
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--whatsapp-darker-green);
-            appearance: none;
-        }
-        
-        .phone-input {
-            width: 70%;
-            padding: 15px;
-            border: 1px solid var(--gray);
-            border-left: none;
             font-size: 16px;
-            outline: none;
-            transition: border-color 0.3s;
         }
         
-        .phone-input:focus {
-            border-color: var(--whatsapp-green);
+        .profile-box {
+            margin: 25px 0;
         }
         
-        .submit-btn {
-            background: linear-gradient(135deg, var(--whatsapp-green), var(--whatsapp-dark-green));
-            color: var(--white);
-            border: none;
-            padding: 16px;
-            border-radius: 8px;
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #00ff7f, #0077ff);
+            padding: 3px;
+        }
+        
+        .profile-pic img {
             width: 100%;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            display: none;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid #1a1a2e;
+            object-fit: cover;
         }
         
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        .phone-number {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #00ff7f;
+            letter-spacing: 1px;
         }
         
-        .submit-btn:active {
-            transform: translateY(0);
+        .progress-container {
+            background: #0f0f23;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 25px 0;
+            border: 1px solid #0077ff;
         }
         
-        .footer {
-            margin-top: 30px;
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #7fdbff;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #0f0f23;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #0077ff;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0077ff, #00ff7f);
+            width: 0%;
+            transition: width 5s linear;
+        }
+        
+        .status-message {
+            font-size: 14px;
+            color: #7fdbff;
+            margin: 20px 0;
+            min-height: 40px;
+            font-style: italic;
+        }
+        
+        .tech-terms {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
             font-size: 12px;
-            color: var(--dark-gray);
-            line-height: 1.6;
+            color: #00ff7f;
         }
         
-        .error-message {
-            color: #ff4444;
-            font-size: 13px;
-            margin-top: 5px;
+        .tech-term {
+            background: rgba(0, 119, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+            margin: 5px;
+        }
+        
+        .result-button {
+            background: linear-gradient(135deg, #0077ff, #00ff7f);
+            color: #0a0a1a;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            margin: 20px 0;
+            cursor: pointer;
             display: none;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(0,255,127,0.5);
+            transition: all 0.3s;
         }
         
-        @media (max-width: 480px) {
-            .container {
-                padding: 30px 20px;
-            }
-            
-            h1 {
-                font-size: 22px;
-            }
-            
-            .option-btn {
-                padding: 12px;
-            }
+        .result-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0,255,127,0.8);
+        }
+        
+        .disclaimer {
+            font-size: 11px;
+            color: #666;
+            margin-top: 30px;
+        }
+        
+        .terminal-effect {
+            font-family: 'Courier New', monospace;
+            color: #00ff7f;
+            text-align: left;
+            background: #000;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            max-height: 100px;
+            overflow-y: auto;
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" class="logo">
-        <h1>WhatsApp Clone</h1>
-        <p class="question">Quem você quer clonar?</p>
+        <h1>ANÁLISE DE SEGURANÇA AVANÇADA</h1>
+        <div class="subtitle">Sistema de Verificação de WhatsApp</div>
         
-        <div class="options">
-            <button class="option-btn male" id="optionMale">
-                <svg class="option-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 16V8C10 6.9 10.89 6 12 6H21V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V18H12C10.89 18 10 17.1 10 16Z" fill="currentColor"/>
-                </svg>
-                Marido/Namorado
-            </button>
-            
-            <button class="option-btn female" id="optionFemale">
-                <svg class="option-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
-                </svg>
-                Esposa/Namorada
-            </button>
-        </div>
-        
-        <div class="form-group" id="formGroup">
-            <label for="phoneNumber">Número do WhatsApp</label>
-            <div class="input-wrapper">
-                <select class="country-code" id="countryCode">
-                    <option value="55">BR +55</option>
-                </select>
-                <input type="tel" class="phone-input" id="phoneNumber" placeholder="(00) 00000-0000" required>
+        <div class="profile-box">
+            <div class="profile-pic">
+                <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" id="profileImage" alt="WhatsApp">
             </div>
-            <div class="error-message" id="errorMessage">Por favor, insira um número válido</div>
+            <div class="phone-number" id="phoneNumber"></div>
         </div>
         
-        <button type="button" class="submit-btn" id="submitBtn">
-            Clonar WhatsApp
-        </button>
+        <div class="progress-container">
+            <div class="progress-header">
+                <span>PROCESSANDO DADOS</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
         
-        <div class="footer">
-            Ao continuar, você concorda com nossos Termos de Serviço e Política de Privacidade.<br>
-            ©2023 WhatsApp Clone. Todos os direitos reservados.
+        <div class="status-message" id="statusMessage">Iniciando protocolo de análise profunda...</div>
+        
+        <div class="tech-terms">
+            <div class="tech-term">CRIPTOGRAFIA</div>
+            <div class="tech-term">GPS</div>
+            <div class="tech-term">METADADOS</div>
+            <div class="tech-term">IA</div>
+        </div>
+        
+        <div class="terminal-effect" id="terminal">
+            > Iniciando varredura...<br>
+            > Conectando aos servidores...<br>
+            > Bypassando camadas de segurança...<br>
+        </div>
+        
+        <a href="#" class="result-button" id="resultButton">ACESSAR RELATÓRIO COMPLETO</a>
+        
+        <div class="disclaimer">
+            *Este sistema utiliza tecnologia avançada para análise de dados públicos<br>
+            Todas as operações são realizadas dentro da legalidade
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const optionMale = document.getElementById('optionMale');
-            const optionFemale = document.getElementById('optionFemale');
-            const formGroup = document.getElementById('formGroup');
-            const submitBtn = document.getElementById('submitBtn');
-            const phoneInput = document.getElementById('phoneNumber');
-            const errorMessage = document.getElementById('errorMessage');
+        // 1. Pegar número da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const phoneParam = urlParams.get('celular');
+        
+        // 2. Mostrar número formatado
+        function formatPhoneNumber(phone) {
+            if (!phone || phone.length < 12) return "NÃO IDENTIFICADO";
+            return `+${phone.slice(0, 2)} (${phone.slice(2, 4)}) ${phone.slice(4, 9)}-${phone.slice(9)}`;
+        }
+        
+        document.getElementById('phoneNumber').textContent = formatPhoneNumber(phoneParam);
+        
+        // 3. Configurar análise de 5 segundos
+        const progressFill = document.getElementById('progressFill');
+        const progressPercent = document.getElementById('progressPercent');
+        const statusMessage = document.getElementById('statusMessage');
+        const resultButton = document.getElementById('resultButton');
+        const terminal = document.getElementById('terminal');
+        
+        // Mensagens técnicas convincentes
+        const techMessages = [
+            "Quebrando criptografia end-to-end...",
+            "Acessando metadados das mensagens...",
+            "Mapeando localizações via GPS...",
+            "Analisando padrões de comportamento...",
+            "Identificando contatos suspeitos...",
+            "Decodificando imagens compartilhadas...",
+            "Cruzando dados com redes sociais...",
+            "Buscando registros em nuvem...",
+            "Verificando horários das mensagens...",
+            "Finalizando relatório completo..."
+        ];
+        
+        // Mostrar terminal após 1 segundo
+        setTimeout(() => {
+            terminal.style.display = 'block';
+            terminal.innerHTML += "> Acessando servidores WhatsApp... OK<br>";
+            terminal.innerHTML += "> Bypassando criptografia... OK<br>";
+            terminal.scrollTop = terminal.scrollHeight;
+        }, 1000);
+        
+        // Atualizar mensagens a cada 500ms
+        let currentMessage = 0;
+        const messageInterval = setInterval(() => {
+            statusMessage.textContent = techMessages[currentMessage];
+            currentMessage = (currentMessage + 1) % techMessages.length;
             
-            let selectedOption = null;
-            const redirectLinks = {
-                'male': 'https://metododiosa.online/whatsapp-002M',
-                'female': 'https://metododiosa.online/whatsapp-002H'
-            };
+            // Adicionar linha no terminal
+            if (currentMessage % 2 === 0) {
+                terminal.innerHTML += `> ${techMessages[currentMessage].toUpperCase()}...<br>`;
+                terminal.scrollTop = terminal.scrollHeight;
+            }
+        }, 500);
+        
+        // Iniciar barra de progresso
+        setTimeout(() => {
+            progressFill.style.width = '100%';
             
-            // Selecionar opção - Marido/Namorado
-            optionMale.addEventListener('click', function() {
-                selectedOption = 'male';
-                optionMale.classList.add('selected');
-                optionFemale.classList.remove('selected');
-                showForm();
-            });
-            
-            // Selecionar opção - Esposa/Namorada
-            optionFemale.addEventListener('click', function() {
-                selectedOption = 'female';
-                optionFemale.classList.add('selected');
-                optionMale.classList.remove('selected');
-                showForm();
-            });
-            
-            // Envio do formulário
-            submitBtn.addEventListener('click', function() {
-                const phoneNumber = phoneInput.value.replace(/\D/g, '');
+            // Atualizar porcentagem
+            let percent = 0;
+            const percentInterval = setInterval(() => {
+                percent += 1;
+                progressPercent.textContent = `${percent}%`;
                 
-                if (!validatePhone(phoneNumber)) {
-                    errorMessage.style.display = 'block';
-                    return;
+                if (percent >= 100) {
+                    clearInterval(percentInterval);
                 }
-                
-                // Mostrar loading
-                submitBtn.textContent = 'Processando...';
-                submitBtn.disabled = true;
-                
-                // Redirecionar para o link correspondente
-                setTimeout(function() {
-                    window.location.href = redirectLinks[selectedOption];
-                }, 1000);
-            });
+            }, 50); // 5 segundos = 5000ms / 100 = 50ms por incremento
+        }, 100);
+        
+        // Quando completar (5 segundos)
+        setTimeout(() => {
+            // Parar atualização de mensagens
+            clearInterval(messageInterval);
             
-            // Validação em tempo real
-            phoneInput.addEventListener('input', function() {
-                formatPhoneNumber();
-                if (validatePhone(this.value.replace(/\D/g, ''))) {
-                    errorMessage.style.display = 'none';
-                }
-            });
+            // Mensagem final
+            statusMessage.innerHTML = "<strong>ANÁLISE CONCLUÍDA COM SUCESSO!</strong>";
+            statusMessage.style.color = "#00ff7f";
             
-            function showForm() {
-                formGroup.style.display = 'block';
-                submitBtn.style.display = 'block';
-                
-                // Scroll para o formulário
-                setTimeout(() => {
-                    formGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 300);
+            // Adicionar linha final no terminal
+            terminal.innerHTML += "> TODOS OS DADOS COLETADOS COM SUCESSO<br>";
+            terminal.innerHTML += "> RELATÓRIO GERADO<br>";
+            terminal.scrollTop = terminal.scrollHeight;
+            
+            // Mostrar botão de resultados
+            resultButton.style.display = 'block';
+            
+            // Adicionar número como parâmetro no link
+            if (phoneParam) {
+                resultButton.href = `SEU_LINK_AQUI?celular=${phoneParam}`;
             }
             
-            function formatPhoneNumber() {
-                let value = phoneInput.value.replace(/\D/g, '');
-                
-                if (value.length > 0) {
-                    value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
-                    if (value.length > 10) {
-                        value = value.replace(/(\d{5})(\d)/, '$1-$2');
-                    }
-                }
-                
-                phoneInput.value = value;
-            }
+            // Rolagem suave até o botão
+            resultButton.scrollIntoView({ behavior: 'smooth' });
             
-            function validatePhone(phone) {
-                return phone.length >= 11; // DDD + 9 dígitos
-            }
-        });
+            // Opcional: Redirecionar automaticamente após 3 segundos
+            // setTimeout(() => {
+            //     if (phoneParam) {
+            //         window.location.href = `SEU_LINK_AQUI?celular=${phoneParam}`;
+            //     }
+            // }, 3000);
+        }, 5000);
     </script>
 </body>
 </html>
+`);
