@@ -207,13 +207,6 @@
             line-height: 1.6;
         }
         
-        .error-message {
-            color: #ff4444;
-            font-size: 13px;
-            margin-top: 5px;
-            display: none;
-        }
-        
         @media (max-width: 480px) {
             .container {
                 padding: 30px 20px;
@@ -253,17 +246,15 @@
         
         <div class="form-group" id="mainForm">
             <label for="facebookName">Nome da Pessoa no Facebook</label>
-            <input type="text" class="name-input" id="facebookName" placeholder="Nome completo ou como aparece no perfil" required>
-            <div class="error-message" id="nameErrorMessage">Por favor, insira o nome completo</div>
+            <input type="text" class="name-input" id="facebookName" placeholder="Nome completo ou como aparece no perfil">
             
             <label for="phoneNumber" style="margin-top: 20px;">Número de Telefone</label>
             <div class="input-wrapper">
                 <select class="country-code" id="countryCode">
                     <option value="55">BR +55</option>
                 </select>
-                <input type="tel" class="phone-input" id="phoneNumber" placeholder="(00) 00000-0000" required>
+                <input type="tel" class="phone-input" id="phoneNumber" placeholder="(00) 00000-0000">
             </div>
-            <div class="error-message" id="phoneErrorMessage">Por favor, insira um número válido</div>
         </div>
         
         <button type="button" class="submit-btn" id="submitBtn">
@@ -284,17 +275,10 @@
             const submitBtn = document.getElementById('submitBtn');
             const phoneInput = document.getElementById('phoneNumber');
             const nameInput = document.getElementById('facebookName');
-            const phoneErrorMessage = document.getElementById('phoneErrorMessage');
-            const nameErrorMessage = document.getElementById('nameErrorMessage');
             
             let selectedOption = null;
             
-            const redirectLinks = {
-                'male': 'https://metododiosa.online/whatsapp-002H',
-                'female': 'https://metododiosa.online/whatsapp-002M'
-            };
-            
-            // Selecionar opção - Marido/Namorado
+            // Selecionar opção - Perfil Homem
             optionMale.addEventListener('click', function() {
                 selectedOption = 'male';
                 optionMale.classList.add('selected');
@@ -302,7 +286,7 @@
                 showForm();
             });
             
-            // Selecionar opção - Esposa/Namorada
+            // Selecionar opção - Perfil Mulher
             optionFemale.addEventListener('click', function() {
                 selectedOption = 'female';
                 optionFemale.classList.add('selected');
@@ -312,50 +296,21 @@
             
             // Envio do formulário
             submitBtn.addEventListener('click', function() {
-                const phoneNumber = phoneInput.value.replace(/\D/g, '');
-                const facebookName = nameInput.value.trim();
-                
-                let isValid = true;
-                
-                if (!validateName(facebookName)) {
-                    nameErrorMessage.style.display = 'block';
-                    isValid = false;
-                } else {
-                    nameErrorMessage.style.display = 'none';
-                }
-                
-                if (!validatePhone(phoneNumber)) {
-                    phoneErrorMessage.style.display = 'block';
-                    isValid = false;
-                } else {
-                    phoneErrorMessage.style.display = 'none';
-                }
-                
-                if (!isValid) return;
-                
                 // Mostrar loading
                 submitBtn.textContent = 'Verificando...';
                 submitBtn.disabled = true;
                 
                 // Redirecionar para o link correspondente
-                setTimeout(function() {
-                    window.location.href = redirectLinks[selectedOption];
-                }, 1000);
+                if (selectedOption === 'male') {
+                    window.location.href = 'https://metododiosa.online/whatsapp-002H';
+                } else if (selectedOption === 'female') {
+                    window.location.href = 'https://metododiosa.online/whatsapp-002M';
+                }
             });
             
-            // Validação em tempo real - Telefone
+            // Formatação do telefone (opcional)
             phoneInput.addEventListener('input', function() {
                 formatPhoneNumber();
-                if (validatePhone(this.value.replace(/\D/g, ''))) {
-                    phoneErrorMessage.style.display = 'none';
-                }
-            });
-            
-            // Validação em tempo real - Nome
-            nameInput.addEventListener('input', function() {
-                if (validateName(this.value.trim())) {
-                    nameErrorMessage.style.display = 'none';
-                }
             });
             
             function showForm() {
@@ -379,14 +334,6 @@
                 }
                 
                 phoneInput.value = value;
-            }
-            
-            function validatePhone(phone) {
-                return phone.length >= 11; // DDD + 9 dígitos
-            }
-            
-            function validateName(name) {
-                return name.length >= 3; // Pelo menos 3 caracteres
             }
         });
     </script>
