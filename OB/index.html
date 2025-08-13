@@ -28,9 +28,14 @@
             color: #dc3545;
             font-weight: bold;
         }
-        .section-yellow {
-            background-color: #fff3cd;
+        .section-red {
+            background-color: #dc3545;
             padding: 20px;
+            text-align: center;
+        }
+        .heading-white {
+            color: white;
+            margin: 0;
         }
         .cartabutton {
             display: inline-block;
@@ -61,6 +66,63 @@
         .text-block-46 {
             color: inherit;
             text-decoration: none;
+        }
+        /* Texto branco com fundo verde */
+        .green-bg-white-text {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        /* Centralização da imagem */
+        .image-3 {
+            display: block;
+            margin: 20px auto;
+        }
+        /* Estilos dos botões */
+        .pepper_btn {
+            background: #28a745;
+            background-image: -webkit-linear-gradient(top, #34ce57, #28a745);
+            background-image: -moz-linear-gradient(top, #34ce57, #28a745);
+            background-image: -ms-linear-gradient(top, #34ce57, #28a745);
+            background-image: -o-linear-gradient(top, #34ce57, #28a745);
+            background-image: linear-gradient(to bottom, #34ce57, #28a745);
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            color: #fff;
+            font-family: Arial;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: none;
+            text-decoration: none;
+            display: block;
+            margin: 0 auto;
+            width: fit-content;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 1.5s infinite;
+        }
+        .pepper_btn:hover {
+            background: #218838;
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
+        }
+        .pepper_downsell {
+            color: #004faa;
+            font-family: Arial;
+            margin: 10px auto 0;
+            font-size: 16px!important;
+            font-weight: 100;
+            text-decoration: none;
+            display: block;
+            width: fit-content;
+            cursor: pointer;
+            text-align: center;
         }
     </style>
 </head>
@@ -94,9 +156,9 @@
         document.head.appendChild(a);
     </script>
   
-    <section class="section-yellow">
+    <section class="section-red">
         <div class="w-layout-blockcontainer w-container">
-            <h1 class="heading">NÃO SAIA DESSA PÁGINA POIS PODE OCORRER ERROS NO SEU PAGAMENTO!!!</h1>
+            <h1 class="heading-white">NÃO SAIA DESSA PÁGINA POIS PODE OCORRER ERROS NO SEU PAGAMENTO!!!</h1>
         </div>
     </section>
 
@@ -109,7 +171,8 @@
                 <strong> VAI TER ACESSO A TODAS AS REDES SOCIAS DE QUEM VOCÊ QUISER!!!</strong>
                 E Localização em TEMPO REAL DE QUEM VOCÊ QUISER!
                 <br><br>
-                <span class="green-mark">SÃO MUITOS BÔNUS PARA VOCÊ!!!<br><br></span>
+                <span class="green-bg-white-text">SÃO MUITOS BÔNUS PARA VOCÊ!!!</span>
+                <br><br>
                 <strong>R$19.90</strong>
                 <br><br>
             </p>
@@ -119,74 +182,13 @@
                 <br><br>
                 Esse é de longe o preço MAIS BAIXO…
                 <br><br><br><br>‍
-                <strong class="green-mark">Clique no botão verde abaixo para desbloquear seu desconto!</strong>
+                <span class="green-bg-white-text">Clique no botão verde abaixo para desbloquear seu desconto!</span>
             </p>
      
-           <div style="width: auto; max-width: 400px;;">
-        <a href="javascript:void(0)" data-pepper="ngg8rng4ff" class="pepper_btn">SIM, QUERO OS BÔNUS!</a>
-        <a href="javascript:void(0)" data-downsell="https://metododiosa.online/DW/" class="pepper_downsell">Vou recusar essa oferta</a>
-
-   <style>
-    .pepper_btn {
-        background: #28a745; /* Verde base */
-        background-image: -webkit-linear-gradient(top, #34ce57, #28a745); /* Gradiente verde */
-        background-image: -moz-linear-gradient(top, #34ce57, #28a745);
-        background-image: -ms-linear-gradient(top, #34ce57, #28a745);
-        background-image: -o-linear-gradient(top, #34ce57, #28a745);
-        background-image: linear-gradient(to bottom, #34ce57, #28a745);
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        color: #fff;
-        font-family: Arial;
-        font-size: 18px;
-        font-weight: bold; /* Negrito para maior destaque */
-        padding: 15px 30px; /* Botão mais largo */
-        border: none; /* Remove a borda azul */
-        text-decoration: none;
-        display: block;
-        cursor: pointer;
-        text-align: center;
-        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4); /* Sombra verde */
-        transition: all 0.3s ease;
-        animation: pulse 1.5s infinite; /* Efeito de pulsação */
-    }
-
-    .pepper_btn:hover {
-        background: #218838; /* Verde mais escuro no hover */
-        transform: scale(1.02); /* Efeito de zoom sutil */
-        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
-    }
-
-    /* Animação de pulsação */
-    @keyframes pulse {
-        0% {
-            transform: scale(1);
-            box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
-        }
-        70% {
-            transform: scale(1.02);
-            box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
-        }
-        100% {
-            transform: scale(1);
-            box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
-        }
-    }
-
-    .pepper_downsell {
-        color: #004faa;
-        font-family: Arial;
-        margin-top: 10px;
-        font-size: 16px!important;
-        font-weight: 100;
-        text-decoration: none;
-        display: block;
-        cursor: pointer;
-        text-align: center;
-    }
-</style>
-	
+            <div style="margin: 20px 0;">
+                <a href="javascript:void(0)" data-pepper="ngg8rng4ff" class="pepper_btn">SIM, QUERO OS BÔNUS!</a>
+                <a href="javascript:void(0)" data-downsell="https://metododiosa.online/DW/" class="pepper_downsell">Vou recusar essa oferta</a>
+            </div>
 
             <img src="images/Selo-de-Garantia-de-30-Dias-PNG-Transparente-Sem-Fundo.png" loading="lazy" width="308" alt="Selo de garantia de 30 dias" class="image-3">
             
@@ -195,7 +197,7 @@
                 ASSUMIMOS TODOS OS RISCOS!<br>
                 Se você não gostar, e mesmo assim não ter pelo menos 3 vezes mais resultados, devolvemos 100% do seu dinheiro.
                 <br><br>
-                <span class="green-mark">Essa é a verdadeira garantia de ZERO RISCO!</span>
+                <span class="green-bg-white-text">Essa é a verdadeira garantia de ZERO RISCO!</span>
             </p>
         </div>
     </section>
@@ -203,10 +205,11 @@
     <script src="js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" crossorigin="anonymous"></script>
     <script src="js/webflow.js" type="text/javascript"></script>
 
+	 <script src="https://app.pepperpay.com.br/js/oneclick.js"></script>
+
     <script> 
-        let nextUpsellURL = "https://metododiosa.online/back";
+        let nextUpsellURL = "https://metododiosa.online/DW";
         let nextDownsellURL = "";
     </script>
 </body>
 </html>
-
